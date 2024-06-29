@@ -3,15 +3,21 @@ from django.db import models
 # Create your models here.
 
 
-class especialidad(models.Model):
-    especialidad = models.CharField(max_length=20)
+class especialidades(models.Model):
+    rama = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.rama
 
 class agrupaciones(models.Model):
     unidad = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.unidad
 
 class audiovisuale(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
-    agrupacion = models.CharField(max_length=20) #ForeignKey(agrupaciones, on_delete=models.CASCADE)
+    agrupacion = models.ForeignKey(agrupaciones, on_delete=models.CASCADE)
     asignacion = models.CharField(max_length=50)
     equipo = models.CharField(max_length=50) 
     no_inventario = models.CharField(max_length=20, blank=True,null=True)
@@ -27,7 +33,7 @@ class audiovisuale(models.Model):
 
 class comunicacione(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
-    agrupacion = models.CharField(max_length=20)
+    agrupacion = models.ForeignKey(agrupaciones, on_delete=models.CASCADE)
     asignacion = models.CharField(max_length=50)
     equipo = models.CharField(max_length=50) 
     no_inventario = models.CharField(max_length=20, blank=True,null=True)
@@ -43,7 +49,7 @@ class comunicacione(models.Model):
  
 class informatica(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
-    agrupacion = models.CharField(max_length=20)
+    agrupacion = models.ForeignKey(agrupaciones, on_delete=models.CASCADE)
     asignacion = models.CharField(max_length=50)
     equipo = models.CharField(max_length=50) 
     no_inventario = models.CharField(max_length=20, blank=True,null=True)
@@ -59,7 +65,7 @@ class informatica(models.Model):
 
 class utilesYHerramienta(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
-    agrupacion = models.CharField(max_length=20)
+    agrupacion = models.ForeignKey(agrupaciones, on_delete=models.CASCADE)
     asignacion = models.CharField(max_length=50)
     equipo = models.CharField(max_length=50) 
     no_inventario = models.CharField(max_length=20, blank=True,null=True)
@@ -75,7 +81,7 @@ class utilesYHerramienta(models.Model):
     
 class cate(models.Model):
     no = models.PositiveIntegerField()
-    especialidad = models.CharField(max_length=10)
+    especialidad = models.ForeignKey(especialidades, on_delete=models.CASCADE)
     noCATE = models.PositiveIntegerField(verbose_name="no CATE")
     fechaCATE = models.DateField(verbose_name="fecha CATE")
     tipo_de_medio = models.CharField(max_length=50)
