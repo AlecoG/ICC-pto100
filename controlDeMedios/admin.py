@@ -29,10 +29,11 @@ class cateAdmin(admin.ModelAdmin):
     list_display = ("no","especialidad","noCATE","fechaCATE", "tipo_de_medio", "no_inventario", "no_serie", "sello", "usuario", "defecto", "fechaSalida")
     search_fields = ("no", "especialidad",)
     list_filter = ("fechaCATE",)
+
+admin.site.index_template = 'admin/index.html'
     
 admin.site.register(audiovisuale, audiovisualesAdmin) 
 admin.site.register(comunicacione, comunicacionesAdmin)
 admin.site.register(informatica, informaticaAdmin)
 admin.site.register(utilesYHerramienta, utilesHerramientasAdmin)
 admin.site.register(cate, cateAdmin)
-

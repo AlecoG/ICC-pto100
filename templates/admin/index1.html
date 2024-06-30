@@ -1,0 +1,42 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "admin/index.html" %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ICC</title>
+    </head>
+    <body>
+        
+{% block branding %}
+        <header id="header">
+            <div id="branding">
+                <div id="site-name">
+                    <a href="/admin/">Panel Administrativo del ICC Cuerpo de Bomberos</a>
+                </div>
+            </div>
+        </header>
+    <!-- Personaliza el contenido del bloque branding o añade tu propio HTML -->
+{% endblock %}
+
+
+{% block content %}
+        <div>
+            <h1>Sitio Administrativo Personalizado</h1>
+        </div>
+
+    <!-- Personaliza el contenido principal de la página de inicio -->
+{% endblock %}
+    
+ {% block extrastyle %}{% endblock %}
+ {% block sidebar %}{% endblock %}
+ {% block nav-global %}{% endblock %}
+ {% block breadcrumbs %}{% endblock %}
+ {% block footer %}{% endblock %}
+ 
+ 
+</body>
+</html>

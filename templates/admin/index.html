@@ -1,0 +1,31 @@
+
+{% extends 'admin/index.html' %}
+
+{% load static %}
+ 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ICC | Administración{% endblock %}
+    </title>
+</head>
+<body>
+           
+{% block branding %}
+<header id="header">
+    <div id="branding">
+        <div id="site-name">
+            <a href="/admin/">Panel Administrativo del ICC</a>
+        </div>
+    </div>
+</header>
+<!-- Personaliza el contenido del bloque branding o añade tu propio HTML -->
+{% endblock %}
+
+
+</body>
+</html>
