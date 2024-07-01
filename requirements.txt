@@ -1,0 +1,5 @@
+Django==5.0.4
+gunicorn==20.1.0
+#django-crispy-forms==1.14.0
+#django-widget-tweaks==1.5.1
+

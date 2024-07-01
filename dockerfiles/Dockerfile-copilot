@@ -1,0 +1,21 @@
+# Utiliza la imagen de Python como base
+FROM python:3.13.0b2-alpine3.20
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /code
+
+# Copia el archivo requirements.txt al directorio de trabajo
+COPY requirements.txt .
+
+# Instala las dependencias del proyecto
+RUN pip install -r requirements.txt
+
+# Copia el contenido del proyecto al directorio de trabajo
+COPY . .
+
+# Expone el puerto 8000
+EXPOSE 8000
+
+# Comando para ejecutar el servidor de desarrollo de Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+

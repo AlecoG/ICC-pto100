@@ -1,0 +1,24 @@
+## PASOS PARA EL DESPLIGUE ##
+
+CON DOCKERFILE
+
+1- Contruir la imagen:
+
+docker build -t icc.100 .
+
+2- Crear el contenedor y correrlo:
+
+docker run --name panel_admin -p 8000:8000 -d icc.100
+
+3- 
+
+
+
+
+SIN DOCKERFILE
+
+1-Correr app:
+
+docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+
+docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject mysite
