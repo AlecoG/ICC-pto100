@@ -8,3 +8,15 @@ services:
     ports:
       - "127.0.0.1:8000:8000"
     restart: always
+    volumes:
+      - ./:/usr/src/app                          #Volumen para código de la app
+      - Icc/settings.py:/usr/src/app/config      #Volumen para archivo de configuracion
+      #- ./logs:/usr/src/app/logs                #Volumen para registrar logs
+      #- ./media:/usr/src/app/media              #Volumen para estaticos css,js 
+      #- ./static:/usr/src/app/static      
+      #- db-data:/var/lib/postgresql/data        #Volumen para base de datos con postgres
+      - db.sqlite3:/usr/src/app/db               #Volumen para base de datos sqlite3
+
+volumes:
+  db-data:
+                                                                   
