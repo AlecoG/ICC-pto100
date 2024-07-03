@@ -1,5 +1,14 @@
 ## PASOS PARA EL DESPLIGUE ##
 
+
+CON DOCKER COMPOSE
+
+1-Levantar servicio con docker-compose
+
+docker compose up -d
+
+
+
 CON DOCKERFILE
 
 1- Contruir la imagen:
@@ -9,8 +18,6 @@ docker build -t icc.100 .
 2- Crear el contenedor y correrlo:
 
 docker run --name panel_admin -p 8000:8000 -d icc.100
-
-3- 
 
 
 
