@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   panel_admin:
     build: .
@@ -9,13 +7,19 @@ services:
       - "127.0.0.1:8000:8000"
     restart: always
     volumes:
-      - ./:/usr/src/app                          #Volumen para código de la app
-      - Icc/settings.py:/usr/src/app/config      #Volumen para archivo de configuracion
-      #- ./logs:/usr/src/app/logs                #Volumen para registrar logs
-      #- ./media:/usr/src/app/media              #Volumen para estaticos css,js 
+      - ./Icc/:/usr/src/app/Icc/:rw                                #Volumen para código de la app
+      - ./controlDeMedios/:/usr/src/app/controlDeMedios/:rw                          
+      - ./OGO/:/usr/src/app/OGO/:rw                          
+      - ./Icc/settings.py:/usr/src/app/config/settings.py:rw       #Volumen para archivo de configuracion
+      #- ./logs:/usr/src/app/logs                               #Volumen para registrar logs
+      #- ./media:/usr/src/app/media                             #Volumen para estaticos css,js 
       #- ./static:/usr/src/app/static      
-      #- db-data:/var/lib/postgresql/data        #Volumen para base de datos con postgres
-      - db.sqlite3:/usr/src/app/db               #Volumen para base de datos sqlite3
+      #- db-data:/var/lib/postgresql/data                       #Volumen para base de datos con postgres
+      #- ./db.sqlite3:/usr/src/app/database/db.sqlite3:rw                 #Volumen para base de datos sqlite3
+    working_dir: /usr/src/app
+    
+    environment:
+      - DJANGO_DEBUG=True
 
 volumes:
   db-data:

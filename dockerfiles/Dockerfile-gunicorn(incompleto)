@@ -1,0 +1,29 @@
+FROM python:3.12.4-alpine3.20
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+
+RUN apk add --no-cache libc-dev gcc
+
+RUN pip install -r requirements.txt
+
+COPY . .
+
+# Create a Gunicorn configuration file
+RUN touch gunicorn.conf.py
+RUN echo "bind = '0.0.0.0:8000'" > gunicorn.conf.py
+RUN echo "workers = 3" >> gunicorn.conf.py
+RUN echo "user = 'www-data'" >> gunicorn.conf.py
+RUN echo "group = 'www-data'" >> gunicorn.conf.py
+RUN echo "keyfile = '/etc/ssl/private/server.key'" >> gunicorn.conf.py
+RUN echo "certfile = '/etc/ssl/certs/server.pem'" >> gunicorn.conf.py
+
+COPY nginx/certs/server.key /etc/ssl/private/server.key
+COPY nginx/certs/server.pem /etc/ssl/certs/server.pem
+
+EXPOSE 8000
+EXPOSE 443
+
+CMD ["gunicorn", "--config", "gunicorn.conf.py", "myproject.wsgi:application"]
+
