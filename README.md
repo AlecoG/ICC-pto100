@@ -28,6 +28,8 @@ Descripción corta del proyecto y su propósito.
 
 3. Configurar :
 
+	- sudo apt update
+	
 	- sudo apt install nginx                             --> instalar nginx bare-metal en el server
 	
 	- cp nginx/certs/ /etc/nginx/                        --> copiar los certificados pata https (es un autofirmado)

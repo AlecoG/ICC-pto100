@@ -4,13 +4,13 @@ services:
     image: icc.100
     container_name: panel_admin
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8000:7000"
     restart: always
-    volumes:
-      - ./Icc/:/usr/src/app/Icc/:rw                                #Volumen para código de la app
-      - ./controlDeMedios/:/usr/src/app/controlDeMedios/:rw                          
-      - ./OGO/:/usr/src/app/OGO/:rw                          
-      - ./Icc/settings.py:/usr/src/app/config/settings.py:rw       #Volumen para archivo de configuracion
+   # volumes:
+   #   - ./Icc/:/usr/src/app/Icc/:rw                                #Volumen para código de la app
+   #   - ./controlDeMedios/:/usr/src/app/controlDeMedios/:rw                          
+   #   - ./OGO/:/usr/src/app/OGO/:rw                          
+   #   - ./Icc/settings.py:/usr/src/app/config/settings.py:rw       #Volumen para archivo de configuracion
       #- ./logs:/usr/src/app/logs                               #Volumen para registrar logs
       #- ./media:/usr/src/app/media                             #Volumen para estaticos css,js 
       #- ./static:/usr/src/app/static      
@@ -21,6 +21,6 @@ services:
     environment:
       - DJANGO_DEBUG=True
 
-volumes:
-  db-data:
+#volumes:
+ # db-data:
                                                                    

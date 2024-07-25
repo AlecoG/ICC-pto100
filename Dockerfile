@@ -17,12 +17,12 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# Create a Gunicorn configuration file
 
+# Create a Gunicorn configuration file
 RUN mkdir -p /etc/gunicorn
 RUN touch /etc/gunicorn/gunicorn.conf.py
-RUN echo "bind = '0.0.0.0:8000'" > /etc/gunicorn/gunicorn.conf.py
-RUN echo "workers = 3" >> /etc/gunicorn/gunicorn.conf.py
+RUN echo "bind = '0.0.0.0:7000'" > /etc/gunicorn/gunicorn.conf.py
+RUN echo "workers = 5" >> /etc/gunicorn/gunicorn.conf.py
 RUN echo "user = 'www-data'" >> /etc/gunicorn/gunicorn.conf.py
 RUN echo "group = 'www-data'" >> /etc/gunicorn/gunicorn.conf.py
 #RUN echo "keyfile = '/etc/ssl/private/server.key'" >> /etc/gunicorn/gunicorn.conf.py
@@ -33,8 +33,8 @@ RUN echo "group = 'www-data'" >> /etc/gunicorn/gunicorn.conf.py
 #COPY nginx/certs/server.key /etc/ssl/private/server.key
 #COPY nginx/certs/server.pem /etc/ssl/certs/server.pem
 
-EXPOSE 8000
-EXPOSE 443
+#EXPOSE 8080
+EXPOSE 7000
 
 
 CMD ["gunicorn", "--config", "/etc/gunicorn/gunicorn.conf.py", "Icc.wsgi:application"]
