@@ -13,7 +13,7 @@ services:
    
       #- ./logs:/usr/src/app/logs                               #Volumen para registrar logs
       #- db-data:/var/lib/postgresql/data                       #Volumen para base de datos con postgres
-      #- ./db.sqlite3:/usr/src/app/database/db.sqlite3:rw                 #Volumen para base de datos sqlite3
+    #  - ./db.sqlite3:/usr/src/app/db.sqlite3:rw                 #Volumen para base de datos sqlite3
     working_dir: /usr/src/app
     
     environment:

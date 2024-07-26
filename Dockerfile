@@ -25,6 +25,11 @@ RUN echo "bind = '0.0.0.0:7000'" > /etc/gunicorn/gunicorn.conf.py
 RUN echo "workers = 5" >> /etc/gunicorn/gunicorn.conf.py
 RUN echo "user = 'www-data'" >> /etc/gunicorn/gunicorn.conf.py
 RUN echo "group = 'www-data'" >> /etc/gunicorn/gunicorn.conf.py
+
+
+RUN chown -R www-data:www-data /usr/src/app
+RUN chmod -R 775 /usr/src/app
+
 #RUN echo "keyfile = '/etc/ssl/private/server.key'" >> /etc/gunicorn/gunicorn.conf.py
 #RUN echo "certfile = '/etc/ssl/certs/server.pem'" >> /etc/gunicorn/gunicorn.conf.py
 
